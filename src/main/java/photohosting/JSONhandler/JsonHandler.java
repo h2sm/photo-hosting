@@ -17,7 +17,7 @@ public class JsonHandler {
     public static void downloadPicture(JSONObject json) throws IOException {
         var internetAddress= (String) json.getJSONObject("image").get("full_adress");
         var name = (String) json.getJSONObject("image").get("id");
-        System.out.println(internetAddress);
+        System.out.println(internetAddress + " downloaded");
         try(InputStream in = new URL(internetAddress).openStream()){
             Files.copy(in, Paths.get("/mnt/DA9ACF429ACF19C1/testing/"+name+".jpg"));
         }
