@@ -9,7 +9,6 @@ public class Generator {
     private byte[] pointers = {0, 0, 0, 0, 0};//счетчик битов
     private final int maxLength = alphabet.length;//62
     private int changingBit = pointers.length-1;
-    private int checker = 0;
 
     public String generate() {
         var sb = new StringBuilder();
@@ -34,7 +33,7 @@ public class Generator {
                         pointers[changingBit-3]=0;
                         pointers[changingBit-4]+=1;
                         if (pointers[changingBit-4]==maxLength){
-                            pointers[changingBit-4]=0;
+                            System.exit(0);
                         }
                     }
                 }

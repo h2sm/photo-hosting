@@ -1,7 +1,6 @@
 package photohosting.web;
 
 import org.json.JSONObject;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -11,10 +10,11 @@ public class Browser {
         try (InputStream stream = new URL("https://micropic.ru/api/view/" + pictureID).openStream()) {
             BufferedReader rd = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
             String jsonText = readAll(rd);
-            return new JSONObject(jsonText);
+            JSONObject json = new JSONObject(jsonText);
+            return json;
         }
-    }
 
+    }
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
