@@ -15,10 +15,9 @@ public class Generator {
 
         for (byte pointer : pointers) {
             var b = alphabet[pointer];
-
-            sb.append(alphabet[pointer]);
+            if ((int) b > 10) sb.append((char) b);
+            else sb.append(b);
         }
-
         pointers[changingBit] += 1;//добавляем еденичку к изменившемуся биту
 
 
