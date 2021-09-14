@@ -1,5 +1,6 @@
 package photohosting;
 
+import photohosting.JSONhandler.JsonHanlder;
 import photohosting.generator.Generator;
 import photohosting.web.Browser;
 
@@ -13,8 +14,9 @@ public class Main {
                 var imgCode = gen.generate();
                 System.out.println("Trying " + imgCode + "...");
                 var json = Browser.getJson(imgCode);
-                if (json.get("status").equals("success")){
-                    System.out.println("Status is - " + json.get("status"));;
+                if (JsonHanlder.checkJson(json)){
+                    System.out.println("Downloadable picture found: " + imgCode);
+                    JsonHanlder.downloadPicture(json);
                 }
             }
             catch (IOException e){
